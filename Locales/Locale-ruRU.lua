@@ -755,4 +755,13 @@ L["Zone Header Settings"] = "Zone Header Settings"
 L["Zone headers hide when all contained quests are hidden"] = "Hide zone headers with only hidden quests"
 --[[Translation missing --]]
 L["Zones"] = "Zones"
- 
+--[[Translation missing --]]
+L["Quest Info Colour"] = "Quest Info Colour"
+--[[Translation missing --]]
+L["Sets the color for the info text ('hidden') for quests"] = "Sets the color for the info text ('hidden') for quests"
+--[[Translation missing --]]
+L["Zone Info Colour"] = "Zone Info Colour"
+--[[Translation missing --]]
+L["Sets the color for the info text ('hidden') of each zone"] = "Sets the color for the info text ('hidden') of each zone"
+--[[Translation missing --]]
+L["Hidden"] = "Hidden"  

@@ -48,6 +48,10 @@ local strUndoneColour = "|cffffffff"
 local strDoneColour = "|cffffffff"
 local strObjectiveTooltipTextColour = "|cffffffff"
 
+-- smb, add colors
+local strQuestInfoColor = "|cffffffff"
+local strZoneInfoColor = "|cffffffff"
+
 local intItemButtonSize = 26
 local bonusObjectivesZoneTitle = L['Bonus Objectives'];
 local bonusObjectivesZoneID = 'Bonus Objectives';
@@ -354,6 +358,10 @@ local defaults = {
 			ShowHideButtonColour = {r = 0.3, g = 0.3, b = 0.3, a = 0.65},
 			ShowHideButtonActiveColour = {r = 0.2, g = 0.3, b = 1, a = 0.75},
 			ShowHideButtonBorderColour = {r = 0, g = 0, b = 0, a = 1},
+
+			-- smb, add colors
+			QuestInfoColor = {r = 1, g = 0, b = 0, a = 1},
+			ZoneInfoColor = {r = 1, g = 0, b = 0, a = 1},
 		},
 		Notifications = {
 			SuppressBlizzardNotifications = false,
@@ -1680,6 +1688,39 @@ local function getOptions()
 								end,
 							order = 33,
 						},		
+
+						-- smb, add colors
+						ZoneInfoColor = {
+							name = L["Zone Info Colour"],
+							desc = L["Sets the color for the info text ('hidden') of each zone"],
+							type = "color",
+							hasAlpha = true,
+							get = function() return db.Colours.ZoneInfoColor.r, db.Colours.ZoneInfoColor.g, db.Colours.ZoneInfoColor.b, db.Colours.ZoneInfoColor.a end,
+							set = function(_,r,g,b,a)
+									db.Colours.ZoneInfoColor.r = r
+									db.Colours.ZoneInfoColor.g = g
+									db.Colours.ZoneInfoColor.b = b
+									db.Colours.ZoneInfoColor.a = a
+									QuestTracker:HandleColourChanges()
+								end,
+							order = 34,
+						},
+						QuestInfoColor = {
+							name = L["Quest Info Colour"],
+							desc = L["Sets the color for the info text ('hidden') for quests"],
+							type = "color",
+							hasAlpha = true,
+							get = function() return db.Colours.QuestInfoColor.r, db.Colours.QuestInfoColor.g, db.Colours.QuestInfoColor.b, db.Colours.QuestInfoColor.a end,
+							set = function(_,r,g,b,a)
+									db.Colours.QuestInfoColor.r = r
+									db.Colours.QuestInfoColor.g = g
+									db.Colours.QuestInfoColor.b = b
+									db.Colours.QuestInfoColor.a = a
+									QuestTracker:HandleColourChanges()
+								end,
+							order = 35,
+						},						
+
 						HeaderGradualColoursSpacer = {
 							name = "",
 							width = "full",
@@ -3066,7 +3107,8 @@ function SQLQuest:Render()
 	
 	-- Hidden tag
 	if (self.IsHidden == true and db.ZonesAndQuests.AllowHiddenQuests == true) then
-		strQuestReturnText = strQuestReturnText .. strHeaderColour .. L[" (Hidden)"] .. "|r"
+		-- smb, strHeaderColour -> strQuestInfoColor
+		strQuestReturnText = strQuestReturnText .. strQuestInfoColor .. L[" (Hidden)"] .. "|r"
 	end 
 	
 	local strObjectivesReturnText = ""
@@ -3928,7 +3970,7 @@ function QuestTracker:GetMinionHeaderButton(zoneInstance)
 	
 	if (db.ZonesAndQuests.ShowHiddenCountOnZones == true and db.ZonesAndQuests.AllowHiddenQuests == true) then
 		if (objButton.ZoneInstance:HiddenQuestCount() > 0) then
-			objButton.objFontString1:SetText(strPrefix .. objButton.ZoneInstance.Title .. "|r " .. strInfoColour .. "(" .. objButton.ZoneInstance:HiddenQuestCount() .. "/" .. objButton.ZoneInstance.QuestCount .." Hidden)|r");	
+			objButton.objFontString1:SetText(strPrefix .. objButton.ZoneInstance.Title .. "|r " .. strZoneInfoColor .. "(" .. objButton.ZoneInstance:HiddenQuestCount() .. "/" .. objButton.ZoneInstance.QuestCount .. " ".. L("Hidden") .. ")|r");	
 		else
 			objButton.objFontString1:SetText(strPrefix .. objButton.ZoneInstance.Title .. "|r");
 		end
@@ -5739,6 +5781,10 @@ function QuestTracker:UpdateColourStrings()
 	strDoneColour = format("|c%02X%02X%02X%02X", 255, db.Colours.DoneColour.r * 255, db.Colours.DoneColour.g * 255, db.Colours.DoneColour.b * 255);
 	strObjectiveDescriptionColour = format("|c%02X%02X%02X%02X", 255, db.Colours.ObjectiveDescColour.r * 255, db.Colours.ObjectiveDescColour.g * 255, db.Colours.ObjectiveDescColour.b * 255);	
 	strObjectiveTooltipTextColour = format("|c%02X%02X%02X%02X", 255, db.Colours.ObjectiveTooltipTextColour.r * 255, db.Colours.ObjectiveTooltipTextColour.g * 255, db.Colours.ObjectiveTooltipTextColour.b * 255);	
+
+	-- smb, add Colors
+	strQuestInfoColor = format("|c%02X%02X%02X%02X", 255, db.Colours.QuestInfoColor.r * 255, db.Colours.QuestInfoColor.g * 255, db.Colours.QuestInfoColor.b * 255);
+	strZoneInfoColor = format("|c%02X%02X%02X%02X", 255, db.Colours.ZoneInfoColor.r * 255, db.Colours.ZoneInfoColor.g * 255, db.Colours.ZoneInfoColor.b * 255);
 end
 
 function QuestTracker:HandleColourChanges()

@@ -446,3 +446,8 @@ L["Zone Header Settings"] = "Zonen Einstellungen"
 L["Zone headers hide when all contained quests are hidden"] = "Zonenbereich ausblenden, wenn alle beinhalteten Quests versteckt sind"
 L["Zones"] = "Zonen"
  
+L["Quest Info Colour"] = "Quest Infofarbe"
+L["Sets the color for the info text ('hidden') for quests"] = "Setzt die Farbe für den Infotext  ('Versteckt') hinter Quests"
+L["Zone Info Colour"] = "Zonen Infofarbe"
+L["Sets the color for the info text ('hidden') of each zone"] = "Setzt die Farbe für den Infotext ('Versteckt') hinter Zonen"
+L["Hidden"] = "Versteckt"

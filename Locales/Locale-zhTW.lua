@@ -444,4 +444,13 @@ L["Zone Header Colour"] = "地區標題顏色"
 L["Zone Header Settings"] = "地區標題設定"
 L["Zone headers hide when all contained quests are hidden"] = "全部包括隱藏任務時地區標題隱藏"
 L["Zones"] = "區域"
- 
+--[[Translation missing --]]
+L["Quest Info Colour"] = "Quest Info Colour"
+--[[Translation missing --]]
+L["Sets the color for the info text ('hidden') for quests"] = "Sets the color for the info text ('hidden') for quests"
+--[[Translation missing --]]
+L["Zone Info Colour"] = "Zone Info Colour"
+--[[Translation missing --]]
+L["Sets the color for the info text ('hidden') of each zone"] = "Sets the color for the info text ('hidden') of each zone"
+--[[Translation missing --]]
+L["Hidden"] = "Hidden"  
