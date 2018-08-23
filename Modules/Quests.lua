@@ -5483,9 +5483,9 @@ function QuestTracker:OpenQuestLog(questInstance)
 		end
 		local mapID, zoneMapID = C_TaskQuest.GetQuestZoneID(questInstance.ID)
 		if (zoneMapID) then
-			SetMapByID(zoneMapID)
+			WorldMapFrame:SetMapID(zoneMapID)
 		elseif (mapID) then
-			SetMapByID(mapID)
+			WorldMapFrame:SetMapID(mapID)
 		end		
 		SetSuperTrackedQuestID(questInstance.ID)
 		
