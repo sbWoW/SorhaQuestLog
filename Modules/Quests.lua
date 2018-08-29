@@ -3970,7 +3970,7 @@ function QuestTracker:GetMinionHeaderButton(zoneInstance)
 	
 	if (db.ZonesAndQuests.ShowHiddenCountOnZones == true and db.ZonesAndQuests.AllowHiddenQuests == true) then
 		if (objButton.ZoneInstance:HiddenQuestCount() > 0) then
-			objButton.objFontString1:SetText(strPrefix .. objButton.ZoneInstance.Title .. "|r " .. strZoneInfoColor .. "(" .. objButton.ZoneInstance:HiddenQuestCount() .. "/" .. objButton.ZoneInstance.QuestCount .. " ".. L("Hidden") .. ")|r");	
+			objButton.objFontString1:SetText(strPrefix .. objButton.ZoneInstance.Title .. "|r " .. strZoneInfoColor .. "(" .. objButton.ZoneInstance:HiddenQuestCount() .. "/" .. objButton.ZoneInstance.QuestCount .. " ".. L["Hidden"] .. ")|r");	
 		else
 			objButton.objFontString1:SetText(strPrefix .. objButton.ZoneInstance.Title .. "|r");
 		end
